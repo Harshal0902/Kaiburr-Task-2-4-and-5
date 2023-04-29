@@ -19,3 +19,13 @@ Created Web UI for the application created in task 2 using ReactJS.
 
 Output:
 ![image](https://user-images.githubusercontent.com/64153988/235301214-d1ce9e6b-31d5-487f-a6ca-c2a9806137d6.png)
+
+## Task 5. CI-CD Pipeline
+Create a CI-CD pipeline for a sample application (built in task 1 and/or 4 above) using any CI-CD tool of your choice like Jenkins, Azure DevOps, Gitlab, Github Actions, AWS CodePipeline or any other tool of your choice. Include a code build and a docker build step in
+your pipeline.
+
+### Solution:
+The CI/CD pipeline is created using Github Actions. The workflow file is present in the .github/workflows folder. The workflow file is named as ci-cd.yml. The workflow file contains the following steps:
+- Checkout: This step checks out the code from the repository.
+- Build: This step builds the code using maven.
+- Test: This step runs the unit tests.
