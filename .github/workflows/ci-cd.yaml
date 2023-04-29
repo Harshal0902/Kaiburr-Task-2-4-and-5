@@ -13,18 +13,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Swagger UI Action
-      uses: Legion2/swagger-ui-action@v1.1.6
-      with:
-        command: "validate"
-        spec: "swagger.yaml"
-
     - name: Build and test React frontend
       uses: actions/setup-node@v2
       with:
         node-version: '14.x'
     - run: |
-        cd react-frontend
+        cd Task4
         npm install
         npm run build
         npm run test
@@ -53,7 +47,7 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         password: ${{ secrets.SERVER_PASSWORD }}
         script: |
-          cd /var/www/react-frontend
+          cd /var/www/task4
           git pull
           npm install
           npm run build

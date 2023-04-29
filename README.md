@@ -18,3 +18,4 @@ Create a basic WEB UI frontend for an application that you created for #1 or #2 
 Created Web UI for the application created in task 2 using ReactJS.
 
 Output:
+![image](https://user-images.githubusercontent.com/64153988/235301214-d1ce9e6b-31d5-487f-a6ca-c2a9806137d6.png)
