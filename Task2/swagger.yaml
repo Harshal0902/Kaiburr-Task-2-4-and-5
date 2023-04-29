@@ -1,0 +1,126 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Kaiburr Task 2
+  description: Swagger codegen
+schemes:
+  - http
+  - https
+host: petstore.swagger.io
+basePath: /api/v1
+consumes:
+  - application/json
+produces:
+  - application/json
+definitions:
+  Server:
+    type: object
+    required:
+      - id
+      - name
+      - language
+      - framework
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      language:
+        type: string
+      framework:
+        type: string
+  ServerResponse:
+    type: object
+    required:
+      - servers
+    properties:
+      servers:
+        type: array
+        items:
+          $ref: '#/definitions/Server'
+tags:
+  - name: server
+    description: server controller
+paths:
+  /Users/addServer:
+    x-swagger-router-controller: servers
+    put:
+      tags:
+        - server
+      description: save a server
+      operationId: saveServer
+      parameters:
+        - name: server
+          in: body
+          description: new server object
+          required: true
+          schema:
+            $ref: '#/definitions/Server'
+      responses:
+        '201':
+          description: servers saved
+          schema:
+            $ref: '#/definitions/ServerResponse'
+  /Users/findServerByName/{name}:
+    x-swagger-router-controller: servers
+    get:
+      tags:
+        - server
+      description: get Server by name
+      operationId: getServerByName
+      parameters:
+        - name: name
+          in: path
+          description: in path name
+          type: string
+          required: true
+      responses:
+        '200':
+          description: filter server with name
+          schema:
+            $ref: '#/definitions/ServerResponse'
+        '404':
+          description: Server wasn't found
+  /Users/findServerById/{id}:
+    x-swagger-router-controller: servers
+    get:
+      tags:
+        - server
+      description: get Server by ID
+      operationId: getServerByID
+      parameters:
+        - name: id
+          in: path
+          description: in path ID
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: filter server with id
+          schema:
+            $ref: '#/definitions/ServerResponse'
+        '404':
+          description: Server wasn't found
+  /Users/deleteServerByID/{id}:
+    delete:
+      tags:
+        - server
+      description: Delete a Server with ID
+      operationId: deleteServerByID
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: Server was Deleted
+        '404':
+          description: Not found
+securityDefinitions:
+  cors:
+    type: apiKey
+    in: header
+    name: Access-Control-Allow-Origin
+security:
+  - cors: []
